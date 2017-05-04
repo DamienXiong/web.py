@@ -7,7 +7,7 @@ import web
 db = web.database(dbn='sqlite', db='MovieSite.db')
 
 movie_ids = []
-for index in range(78, 250, 50):
+for index in range(0, 250, 50):
     print index
     response = urllib.urlopen('http://api.douban.com/v2/movie/top250?start=%d&count=50' % index)
     data = response.read()
@@ -47,6 +47,6 @@ for mid in movie_ids:
     try:
         add_movie(data)
     except KeyError:
-        print(str(mid) + 'not found' )
+        print(str(mid) + ' not found' )
     count += 1
-    time.sleep(3)
+    time.sleep(10)
